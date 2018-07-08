@@ -14,7 +14,7 @@ import urllib
 import urllib.parse
 import urllib.request
 import requests
-from HuobiKeys import HUOBI_ACCESS_KEY, HUOBO_SECRET_KEY
+from restful.HuobiKeys import HUOBI_ACCESS_KEY, HUOBO_SECRET_KEY
 
 # 此处填写APIKEY
 

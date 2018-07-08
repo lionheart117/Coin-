@@ -5,7 +5,7 @@
 # @QQ      : 375235513
 # @github  : https://github.com/KlausQIU
 
-from Utils import *
+from restful.Utils import *
 
 '''
 Market data API
