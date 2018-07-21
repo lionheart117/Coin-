@@ -30,9 +30,9 @@ def CoinPairProspector():
 #        profit = 0
 
         if profit > 0:
-            print('get profit: %f' % profit)
+            print('gain profit: %f' % profit)
         else:
-            print('can\'t get profit: %f' % profit)
+            print('trade deficit: %f' % profit)
 
         time.sleep(1)
 
