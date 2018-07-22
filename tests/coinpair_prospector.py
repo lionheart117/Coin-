@@ -3,7 +3,7 @@
 from binance.BinanceAPI import *
 from restful.HuobiServices import *
 
-def CoinPairProspector():
+def CoinPairProspector(quoteCoin):
 
     client = BinanceAPI('', '')
 
@@ -12,11 +12,12 @@ def CoinPairProspector():
     LegalCoinPairs = {}
 
     for symbollist in client.get_exchange_info()['symbols']:
-        if symbollist['status'] == 'TRADING':
+        if symbollist['quoteAsset'] == quoteCoin:
             BinanceCoinPairs[symbollist['symbol']] = True
 
     for symbollist in get_symbols()['data']:
-        HuobiCoinPairs[symbollist['symbol'].upper()] = True
+        if symbollist['quote-currency'] == quoteCoin.lower():
+            HuobiCoinPairs[symbollist['symbol'].upper()] = True
 
     for symbol in BinanceCoinPairs:
         if symbol in HuobiCoinPairs:
@@ -45,4 +46,4 @@ def CoinPairProspector():
 
 
 if __name__ == '__main__':
-    CoinPairProspector()
+    CoinPairProspector('ETH')
