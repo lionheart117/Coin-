@@ -46,6 +46,11 @@ class BinanceAPI:
         params = {"symbol": market}
         return self._get_no_sign(path, params)
 
+    def get_orderbook_ticker(self, market):
+        path = "%s/ticker/bookTicker" % self.BASE_URL_V3
+        params = {"symbol": market}
+        return self._get_no_sign(path, params)
+
     def get_order_books(self, market, limit=50):
         path = "%s/depth" % self.BASE_URL
         params = {"symbol": market, "limit": limit}
