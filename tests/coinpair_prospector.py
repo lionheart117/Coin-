@@ -43,6 +43,8 @@ def CoinPairProspector(baseCoinList, quoteCoinList):
             if symbol in HuobiCoinPairs:
                 LegalCoinPairs[symbol] = True
 
+    logfile = open('CoinPairProspector' + time.strftime('_%Y_%m_%dT%H_%M_%S') + '.log', 'w')
+
     while(1):
         for symbol in LegalCoinPairs:
             binanceTicker = client.get_order_books(symbol,5)
@@ -58,10 +60,12 @@ def CoinPairProspector(baseCoinList, quoteCoinList):
             ProfitB2H = (1 - 0.0005) * binanceBidPrice - (1 + 0.002 ) * huobiAskPrice   # Binance: sell Huobi  :buy
 
             if ProfitH2B > 0 or ProfitB2H > 0:
-                print(symbol + ':' + ' ONE  SIDE TRADE GAIN PROFIT: H2B:%.8f  B2H:%.8f\n' % (ProfitH2B, ProfitB2H))
+                info = time.strftime('%Y-%m-%dT%H:%M:%S') + ': ' + symbol + ':' + ' ONE  SIDE TRADE GAIN PROFIT: H2B:%.8f  B2H:%.8f\n' % (ProfitH2B, ProfitB2H)
+                print(info)
+                logfile.write(info)
             else:
-                print(symbol + ':' + ' BOTH SIDE TRADES DEFICIT: H2B:%.8f  B2H:%.8f\n' % (ProfitH2B, ProfitB2H))
+                print(time.strftime('%Y-%m-%dT%H:%M:%S') + ': ' + symbol + ':' + ' BOTH SIDE TRADES DEFICIT: H2B:%.8f  B2H:%.8f\n' % (ProfitH2B, ProfitB2H))
 
 
 if __name__ == '__main__':
-    CoinPairProspector(['EOS','XRP','BCH','XLM','LTC','IOTA','ADA'],['ETH'])
+    CoinPairProspector([],['ETH'])
