@@ -23,13 +23,13 @@ def CoinPairProspector(baseCoinList, quoteCoinList):
 
     if baseCoinList:
 
-        for symbollist in client.get_exchange_info()['symbols']:
+        for symbollist in binanceSymbolList:
             for quoteCoin in quoteCoinList:
                 for baseCoin in baseCoinList:
                     if symbollist['baseAsset'] == baseCoin and symbollist['quoteAsset'] == quoteCoin:
                         BinanceCoinPairs[symbollist['symbol']] = True
 
-        for symbollist in get_symbols()['data']:
+        for symbollist in huobiSymbolList:
             for quoteCoin in quoteCoinList:
                 for baseCoin in baseCoinList:
                     if symbollist['base-currency'] == baseCoin.lower() and symbollist['quote-currency'] == quoteCoin.lower():
@@ -39,12 +39,12 @@ def CoinPairProspector(baseCoinList, quoteCoinList):
             if symbol in HuobiCoinPairs:
                 LegalCoinPairs[symbol] = True
     else:
-        for symbollist in client.get_exchange_info()['symbols']:
+        for symbollist in binanceSymbolList:
             for quoteCoin in quoteCoinList:
                 if symbollist['quoteAsset'] == quoteCoin:
                     BinanceCoinPairs[symbollist['symbol']] = True
 
-        for symbollist in get_symbols()['data']:
+        for symbollist in huobiSymbolList:
             for quoteCoin in quoteCoinList:
                 if symbollist['quote-currency'] == quoteCoin.lower():
                     HuobiCoinPairs[symbollist['symbol'].upper()] = True
