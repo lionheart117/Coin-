@@ -65,6 +65,9 @@ def CoinPairProspector(baseCoinList, quoteCoinList):
             except requests.exceptions.ConnectionError as e:
                 print(e)
                 continue
+            except requests.exceptions.ReadTimeout as e:
+                print(e)
+                continue
 
             binanceBidPrice = float(binanceTicker['bids'][0][0])
             binanceAskPrice = float(binanceTicker['asks'][0][0])
