@@ -30,6 +30,9 @@ TRADE_URL = "https://api.huobi.pro"
 # 首次运行可通过get_accounts()获取acct_id,然后直接赋值,减少重复获取。
 ACCOUNT_ID = None
 
+# increase parameter TIMEOUT by lionheart117 2018.8.11
+TIMEOUT = 10
+
 #'Timestamp': '2017-06-02T06:13:49'
 
 def http_get_request(url, params, add_to_headers=None):
@@ -40,7 +43,7 @@ def http_get_request(url, params, add_to_headers=None):
     if add_to_headers:
         headers.update(add_to_headers)
     postdata = urllib.parse.urlencode(params)
-    response = requests.get(url, postdata, headers=headers, timeout=5) 
+    response = requests.get(url, postdata, headers=headers, timeout=TIMEOUT)
     try:
         
         if response.status_code == 200:
@@ -60,7 +63,7 @@ def http_post_request(url, params, add_to_headers=None):
     if add_to_headers:
         headers.update(add_to_headers)
     postdata = json.dumps(params)
-    response = requests.post(url, postdata, headers=headers, timeout=10)
+    response = requests.post(url, postdata, headers=headers, timeout=TIMEOUT)
     try:
         
         if response.status_code == 200:
