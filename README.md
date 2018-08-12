@@ -1,2 +1,7 @@
 # Coin-Plus
-Quantitative transaction for DigiCoins
+##Quantitative transaction for CryptoCurrencies
+
+1. APIs
+
+2. 
+
