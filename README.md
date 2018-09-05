@@ -1,7 +1,10 @@
 # Coin-Plus
-##Quantitative transaction for CryptoCurrencies
+**Quantitative transaction for CryptoCurrencies**
 
-1. APIs
+including:
+1. Exchange APIs
 
-2. 
+2. Function Performance Test
+
+3. Strategies
 
